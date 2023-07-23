@@ -1,0 +1,406 @@
+import java.util.*
+
+fun main() {
+
+    val scanner = Scanner(System.`in`)
+    var option: Int
+
+    do {
+        printMenu()
+        option = scanner.nextInt()
+        when (option) {
+            1 -> {
+                println("Operadores")
+                Operators(scanner)
+            }
+            2 -> {
+                println("Condicionales")
+                conditionals(scanner)
+            }
+            3 -> {
+                println("Ciclos")
+                cycles(scanner)
+            }
+            99 -> println("Programa terminado.")
+            else -> println("Opción no válida.")
+        }
+    } while (option != 99)
+}
+
+fun printMenu() {
+    println("----- Menú -----")
+    println("1. Operadores")
+    println("2. Condicionales")
+    println("3. Ciclos")
+    println("99. Salir")
+    println("-----------------")
+    print("Ingrese una opción: ")
+}
+
+fun Operators(scanner: Scanner) {
+    var option: Int
+
+    do {
+        printOperatorsMenu()
+        option = scanner.nextInt()
+        when (option) {
+            1 -> {
+                println("Área de un triángulo")
+                println("Ingrese la base del triángulo:")
+                val base = scanner.nextDouble()
+
+                println("Ingrese la altura del triángulo:")
+                val altura = scanner.nextDouble()
+
+                val area = (base * altura) / 2
+                println("El área del triángulo es: $area")
+            }
+            2 -> {
+                println("Suma de dos números")
+                println("Ingrese el primer número:")
+                val num1 = scanner.nextDouble()
+
+                println("Ingrese el segundo número:")
+                val num2 = scanner.nextDouble()
+
+                val suma = num1 + num2
+                println("La suma de los dos números es: $suma")
+            }
+            3 -> {
+                println("Número elevado al cuadrado")
+                println("Ingrese un número:")
+                val num = scanner.nextDouble()
+
+                val cuadrado = num * num
+                println("El número elevado al cuadrado es: $cuadrado")
+            }
+            4 -> {
+                println("Conversión de euros a dólares")
+                println("Ingrese la cantidad de euros:")
+                val euros = scanner.nextDouble()
+                val tipoCambio = 1.18 // Tipo de cambio EUR a USD (ejemplo)
+                val dolares = euros * tipoCambio
+                println("$euros euros equivalen a $dolares dólares")
+            }
+            5 -> {
+                println("Área y perímetro de un cuadrado")
+                println("Ingrese el lado del cuadrado:")
+                val lado = scanner.nextDouble()
+                val area = lado * lado
+                val perimetro = 4 * lado
+                println("El área del cuadrado es: $area")
+                println("El perímetro del cuadrado es: $perimetro")
+            }
+            6 -> {
+                println("Área y volumen de un cilindro")
+                println("Ingrese el radio del cilindro:")
+                val radio = scanner.nextDouble()
+
+                println("Ingrese la altura del cilindro:")
+                val altura = scanner.nextDouble()
+
+                val area = 2 * Math.PI * radio * (radio + altura)
+                val volumen = Math.PI * radio * radio * altura
+                println("El área del cilindro es: $area")
+                println("El volumen del cilindro es: $volumen")
+            }
+            7 -> {
+                println("Longitud y área de una circunferencia inscrita")
+                println("Ingrese el radio de la circunferencia:")
+                val radio = scanner.nextDouble()
+                val longitud = 2 * Math.PI * radio
+                val area = Math.PI * radio * radio
+                println("La longitud de la circunferencia es: $longitud")
+                println("El área de la circunferencia es: $area")
+            }
+            8 -> {
+                println("Promedio de tres números")
+                println("Ingrese el primer número:")
+                val num1 = scanner.nextDouble()
+
+                println("Ingrese el segundo número:")
+                val num2 = scanner.nextDouble()
+
+                println("Ingrese el tercer número:")
+                val num3 = scanner.nextDouble()
+
+                val promedio = (num1 + num2 + num3) / 3
+                println("El promedio de los tres números es: $promedio")
+            }
+
+            99 -> println("Regresando al menú principal.")
+            else -> println("Opción no válida.")
+        }
+    } while (option != 99)
+}
+
+fun printOperatorsMenu() {
+    println("----- Operadores -----")
+    println("1. Calcular el área de un triángulo.")
+    println("2. Ingresar dos números por teclado y sumarlos.")
+    println("3. Ingresar un número y visualizar el número elevado al cuadrado.")
+    println("4. Escribir un algoritmo que convierta de euros a dólares.")
+    println("5. Escribir un algoritmo que pida el lado de un cuadrado y muestre el valor del área y del perímetro.")
+    println("6. Escribir un algoritmo que determine el área y el volúmen de un cilindro.")
+    println("7. Realizar un algoritmo que lea el radio de una circunferencia y escriba la longitud de la misma y el área (pi*r)^2 del círculo inscrito.")
+    println("8. Calcular el promedio de tres (3) números ingresados por teclado.")
+    println("99. Regresar al menú principal.")
+    println("-----------------------")
+    print("Ingrese una opción: ")
+}
+
+fun conditionals(scanner: Scanner) {
+    var option: Int
+
+    do {
+        printConditionalsMenu()
+        option = scanner.nextInt()
+        when (option) {
+            1 -> {
+                println("Determinar si un número es positivo o negativo.")
+                println("Ingrese un número:")
+                val numero = scanner.nextDouble()
+
+                if (numero > 0) {
+                    println("El número es positivo.")
+                } else if (numero < 0) {
+                    println("El número es negativo.")
+                } else {
+                    println("El número es cero.")
+                }
+            }
+            2 -> {
+                println("Encontrar el mayor y el menor entre dos números.")
+                println("Ingrese el primer número:")
+                val num1 = scanner.nextDouble()
+
+                println("Ingrese el segundo número:")
+                val num2 = scanner.nextDouble()
+
+                val mayor = maxOf(num1, num2)
+                val menor = minOf(num1, num2)
+
+                println("El mayor es $mayor y el menor es $menor.")
+            }
+            3 -> {
+                println("Calcular el menor y el mayor entre tres números enteros positivos.")
+                println("Ingrese el primer número:")
+                val num1 = scanner.nextInt()
+
+                println("Ingrese el segundo número:")
+                val num2 = scanner.nextInt()
+
+                println("Ingrese el tercer número:")
+                val num3 = scanner.nextInt()
+
+                val menor = minOf(num1, num2, num3)
+                val mayor = maxOf(num1, num2, num3)
+
+                println("El menor es $menor y el mayor es $mayor.")
+            }
+            4 -> {
+                println("Dados dos números A y B, sumarlos si A es menor que B o sino restarlos.")
+                println("Ingrese el número A:")
+                val numA = scanner.nextDouble()
+
+                println("Ingrese el número B:")
+                val numB = scanner.nextDouble()
+
+                val resultado = if (numA < numB) {
+                    numA + numB
+                } else {
+                    numA - numB
+                }
+
+                println("El resultado es $resultado.")
+            }
+            5 -> {
+                println("Dados dos números A y B encontrar el cociente entre A y B.")
+                println("Ingrese el número A:")
+                val numA = scanner.nextDouble()
+
+                println("Ingrese el número B:")
+                val numB = scanner.nextDouble()
+
+                if (numB != 0.0) {
+                    val cociente = numA / numB
+                    println("El cociente es $cociente.")
+                } else {
+                    println("La división no es posible, B no puede ser cero.")
+                }
+            }
+            6 -> {
+                println("Dados dos números A y B, sumarlos si al menos uno de ellos es negativo, en caso contrario multiplicarlos.")
+                println("Ingrese el número A:")
+                val numA = scanner.nextDouble()
+
+                println("Ingrese el número B:")
+                val numB = scanner.nextDouble()
+
+                val resultado = if (numA < 0 || numB < 0) {
+                    numA + numB
+                } else {
+                    numA * numB
+                }
+
+                println("El resultado es $resultado.")
+            }
+            7 -> {
+                println("Determinar si un año es bisiesto o no.")
+                println("Ingrese un año:")
+                val year = scanner.nextInt()
+
+                val esBisiesto = year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
+
+                if (esBisiesto) {
+                    println("El año $year es bisiesto.")
+                } else {
+                    println("El año $year no es bisiesto.")
+                }
+            }
+
+            99 -> println("Regresando al menú principal.")
+            else -> println("Opción no válida.")
+        }
+    } while (option != 99)
+}
+
+fun printConditionalsMenu() {
+    println("----- Condicionales -----")
+    println("1. Determinar si un número es positivo o negativo.")
+    println("2. Encontrar el mayor y el menor entre dos números.")
+    println("3. Calcular el menor y el mayor entre tres números enteros positivos.")
+    println("4. Dados dos números A y B, sumarlos si A es menor que B o sino restarlos.")
+    println("5. Dados dos números A y B encontrar el cociente entre A y B.")
+    println("6. Dados dos números A y B, sumarlos si al menos uno de ellos es negativo, en caso contrario multiplicarlos.")
+    println("7. Determinar si un año es bisiesto o no.")
+    println("99. Regresar al menú principal.")
+    println("--------------------------")
+    print("Ingrese una opción: ")
+}
+
+
+
+fun cycles(scanner: Scanner) {
+    var option: Int
+
+    do {
+        printCyclesMenu()
+        option = scanner.nextInt()
+        when (option) {
+            1 -> {
+                println("Múltiplos de 3 entre 1 y 100:")
+                printMultiplesOf3()
+            }
+            2 -> {
+                println("Números impares entre 0 y 100:")
+                printOddNumbers()
+            }
+            3 -> {
+                println("Números pares del 1 al 100:")
+                printEvenNumbers()
+            }
+            4 -> {
+                println("Cuadrados de los números del 1 al 30:")
+                printSquaresOfNumbers()
+            }
+            5 -> {
+                println("Suma de los cuadrados de los cien primeros números naturales:")
+                printSumOfSquares()
+            }
+            6 -> {
+                println("Generar y mostrar números entre dos números naturales en secuencia ascendente.")
+                println("Ingrese el primer número:")
+                val num1 = scanner.nextInt()
+
+                println("Ingrese el segundo número (debe ser mayor que el primero):")
+                val num2 = scanner.nextInt()
+
+                if (num1 < num2) {
+                    printNumbersInRange(num1, num2)
+                } else {
+                    println("El primer número debe ser menor que el segundo.")
+                }
+            }
+            7 -> {
+                println("Suma de números ingresados por teclado (Ingrese 0 para finalizar):")
+                sumNumbers(scanner)
+            }
+            99 -> println("Regresando al menú principal.")
+            else -> println("Opción no válida.")
+        }
+    } while (option != 99)
+}
+
+fun printCyclesMenu() {
+    println("----- Ciclos -----")
+    println("1. Imprimir todos los múltiplos de 3 que hay entre 1 y 100.")
+    println("2. Imprimir los números impares entre 0 y 100.")
+    println("3. Imprimir los números pares del 1 al 100.")
+    println("4. Escribir un programa que imprima por pantalla los cuadrados de los números del 1 al 30.")
+    println("5. Escribir un programa que sume los cuadrados de los cien primeros números naturales, mostrando el resultado en pantalla.")
+    println("6. Dados dos números naturales, el primero menor que el segundo, generar y mostrar todos los números comprendidos entre ellos en secuencia ascendente.")
+    println("7. Sumar todos los números que se digitan por teclado mientras no sea cero.")
+    println("99. Regresar al menú principal.")
+    println("-------------------")
+    print("Ingrese una opción: ")
+}
+
+fun printMultiplesOf3() {
+    for (i in 1..100) {
+        if (i % 3 == 0) {
+            print("$i ")
+        }
+    }
+    println()
+}
+
+fun printOddNumbers() {
+    for (i in 1..100 step 2) {
+        print("$i ")
+    }
+    println()
+}
+
+fun printEvenNumbers() {
+    for (i in 2..100 step 2) {
+        print("$i ")
+    }
+    println()
+}
+
+fun printSquaresOfNumbers() {
+    for (i in 1..30) {
+        val square = i * i
+        print("$square ")
+    }
+    println()
+}
+
+fun printSumOfSquares() {
+    var sum = 0
+    for (i in 1..100) {
+        sum += i * i
+    }
+    println("La suma de los cuadrados de los cien primeros números naturales es: $sum")
+}
+
+fun printNumbersInRange(start: Int, end: Int) {
+    for (i in start..end) {
+        print("$i ")
+    }
+    println()
+}
+
+fun sumNumbers(scanner: Scanner) {
+    var sum = 0
+    var num: Int
+
+    do {
+        print("Ingrese un número (0 para finalizar): ")
+        num = scanner.nextInt()
+        sum += num
+    } while (num != 0)
+
+    println("La suma de los números ingresados es: $sum")
+}
